@@ -1,0 +1,13 @@
+e:\Projects\TweeterBotv4\TweeterBotv4\bin\Debug\TweeterBotv4.exe.config
+e:\Projects\TweeterBotv4\TweeterBotv4\bin\Debug\TweeterBotv4.exe
+e:\Projects\TweeterBotv4\TweeterBotv4\bin\Debug\TweeterBotv4.pdb
+e:\Projects\TweeterBotv4\TweeterBotv4\obj\Debug\TweeterBotv4.csprojResolveAssemblyReference.cache
+e:\Projects\TweeterBotv4\TweeterBotv4\obj\Debug\TweeterBotv4.exe
+e:\Projects\TweeterBotv4\TweeterBotv4\obj\Debug\TweeterBotv4.pdb
+e:\Projects\TweeterBotv4\TweeterBotv4\bin\Debug\DSharpPlus.CommandsNext.dll
+e:\Projects\TweeterBotv4\TweeterBotv4\bin\Debug\DSharpPlus.dll
+e:\Projects\TweeterBotv4\TweeterBotv4\bin\Debug\Newtonsoft.Json.dll
+e:\Projects\TweeterBotv4\TweeterBotv4\bin\Debug\DSharpPlus.xml
+e:\Projects\TweeterBotv4\TweeterBotv4\bin\Debug\DSharpPlus.CommandsNext.xml
+e:\Projects\TweeterBotv4\TweeterBotv4\bin\Debug\Newtonsoft.Json.xml
+e:\Projects\TweeterBotv4\TweeterBotv4\bin\Debug\config.json

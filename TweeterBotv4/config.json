@@ -1,0 +1,8 @@
+{
+  "token": "", // Bot token from Discord
+  "prefix": "!", // The prefix for all the commands
+  "ConsumerKey": "", // Consumer key from twitter
+  "ConsumerKeySecret": "", // Consumer secret from twitter
+  "AccessToken": "", // Access token from twitter
+  "AccessTokenSecret": "" // Access token secret from twitter
+}
