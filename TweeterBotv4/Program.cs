@@ -25,6 +25,7 @@ namespace TweeterBotv4
 
         public async Task RunBotAsync()
         {
+            
             // first, let's load our configuration file
             var json = "";
             using (var fs = File.OpenRead("config.json"))
@@ -68,7 +69,7 @@ namespace TweeterBotv4
 
             // up next, let's register our commands
             this.Commands.RegisterCommands<UngrouppedCommands>();
-            //this.Commands.RegisterCommands<GrouppedCommands>();
+            this.Commands.RegisterCommands<GrouppedCommands>();
 
             // finnaly, let's connect and log in
             await this.Client.ConnectAsync();
