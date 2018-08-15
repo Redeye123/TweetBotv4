@@ -1073,26 +1073,6 @@
             <param name="embed">Embed to attach to the message.</param>
             <returns>Message that was sent.</returns>
         </member>
-        <member name="M:DSharpPlus.CommandsNext.CommandContext.RespondWithFileAsync(System.IO.FileStream,System.String,System.Boolean,DSharpPlus.Entities.DiscordEmbed)">
-            <summary>
-            Quickly respond with a file to the message that triggered the command.
-            </summary>
-            <param name="file_data">Stream containing the data to attach as a file.</param>
-            <param name="content">Message to respond with.</param>
-            <param name="is_tts">Whether the message is to be spoken aloud.</param>
-            <param name="embed">Embed to attach to the message.</param>
-            <returns>Message that was sent.</returns>
-        </member>
-        <member name="M:DSharpPlus.CommandsNext.CommandContext.RespondWithFileAsync(System.String,System.String,System.Boolean,DSharpPlus.Entities.DiscordEmbed)">
-            <summary>
-            Quickly respond with a file to the message that triggered the command.
-            </summary>
-            <param name="file_path">Path to the file to be attached to the message.</param>
-            <param name="content">Message to respond with.</param>
-            <param name="is_tts">Whether the message is to be spoken aloud.</param>
-            <param name="embed">Embed to attach to the message.</param>
-            <returns>Message that was sent.</returns>
-        </member>
         <member name="M:DSharpPlus.CommandsNext.CommandContext.RespondWithFilesAsync(System.Collections.Generic.Dictionary{System.String,System.IO.Stream},System.String,System.Boolean,DSharpPlus.Entities.DiscordEmbed)">
             <summary>
             Quickly respond with multiple files to the message that triggered the command.

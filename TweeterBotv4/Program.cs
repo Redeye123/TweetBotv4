@@ -9,6 +9,10 @@ using DSharpPlus.CommandsNext.Attributes;
 using System.IO;
 using DSharpPlus.CommandsNext.Exceptions;
 using Newtonsoft.Json;
+using DSharpPlus.Entities;
+using DSharpPlus.EventArgs;
+using DSharpPlus.Exceptions;
+using DSharpPlus.Net;
 
 namespace TweeterBotv4
 {
@@ -35,7 +39,7 @@ namespace TweeterBotv4
             // next, let's load the values from that file
             // to our client's configuration
             var cfgjson = JsonConvert.DeserializeObject<ConfigJson>(json);
-            var cfg = new DiscordConfig
+            var cfg = new DiscordConfiguration
             {
                 Token = cfgjson.Token,
                 TokenType = TokenType.Bot,
@@ -49,7 +53,7 @@ namespace TweeterBotv4
             this.Client = new DiscordClient(cfg);
             this.Client.Ready += this.Client_Ready;
             this.Client.GuildAvailable += this.Client_GuildAvailable;
-            this.Client.ClientError += this.Client_ClientError;
+            this.Client.ClientErrored += this.Client_ClientError;
 
             //let's set up our commands
             var ccfg = new CommandsNextConfiguration
@@ -62,7 +66,7 @@ namespace TweeterBotv4
             this.Commands.CommandExecuted += this.Commands_CommandExecuted;
             this.Commands.CommandErrored += this.Commands_CommandErrored;
 
-            
+
             var mathopcvt = new MathOperationConverter();
             CommandsNextUtilities.RegisterConverter(mathopcvt);
             CommandsNextUtilities.RegisterUserFriendlyTypeName<MathOperation>("operation");
@@ -81,7 +85,7 @@ namespace TweeterBotv4
         private Task Client_Ready(ReadyEventArgs e)
         {
             // let's log the fact that this event occured
-            e.Client.DebugLogger.LogMessage(LogLevel.Info, "TweeterBot", "Client is ready to process events.", DateTime.Now);
+            e.Client.DebugLogger.LogMessage(LogLevel.Info, "TPGBot", "Client is ready to process events.", DateTime.Now);
 
           
             return Task.CompletedTask;
@@ -90,7 +94,7 @@ namespace TweeterBotv4
         private Task Client_GuildAvailable(GuildCreateEventArgs e)
         {
             
-            e.Client.DebugLogger.LogMessage(LogLevel.Info, "TweeterBot", $"Guild available: {e.Guild.Name}", DateTime.Now);
+            e.Client.DebugLogger.LogMessage(LogLevel.Info, "TPGBot", $"Guild available: {e.Guild.Name}", DateTime.Now);
             
             return Task.CompletedTask;
         }
@@ -98,32 +102,46 @@ namespace TweeterBotv4
         private Task Client_ClientError(ClientErrorEventArgs e)
         {
             
-            e.Client.DebugLogger.LogMessage(LogLevel.Error, "TweeterBot", $"Exception occured: {e.Exception.GetType()}: {e.Exception.Message}", DateTime.Now);
+            e.Client.DebugLogger.LogMessage(LogLevel.Error, "TPGBot", $"Exception occured: {e.Exception.GetType()}: {e.Exception.Message}", DateTime.Now);
 
             
             return Task.CompletedTask;
         }
 
-        private Task Commands_CommandExecuted(CommandExecutedEventArgs e)
+        private Task Commands_CommandExecuted(CommandExecutionEventArgs e)
         {
             
-            e.Context.Client.DebugLogger.LogMessage(LogLevel.Info, "TweeterBot", $"{e.Context.User.Username} successfully executed '{e.Command.QualifiedName}'", DateTime.Now);
-
+            e.Context.Client.DebugLogger.LogMessage(LogLevel.Info, "TPGBot", $"{e.Context.User.Username} successfully executed '{e.Command.QualifiedName}'", DateTime.Now);
             
             return Task.CompletedTask;
         }
 
         private async Task Commands_CommandErrored(CommandErrorEventArgs e)
         {
-            
-            e.Context.Client.DebugLogger.LogMessage(LogLevel.Error, "TweeterBot", $"{e.Context.User.Username} tried executing '{e.Command?.QualifiedName ?? "<unknown command>"}' but it errored: {e.Exception.GetType()}: {e.Exception.Message ?? "<no message>"}", DateTime.Now);
 
-            
-            
+
+            e.Context.Client.DebugLogger.LogMessage(LogLevel.Error, "TPGBot", $"{e.Context.User.Username} tried executing '{e.Command?.QualifiedName ?? "<unknown command>"}' but it errored: {e.Exception.GetType()}: {e.Exception.Message ?? "<no message>"}", DateTime.Now);
+
+
+            if (e.Exception is ChecksFailedException ex)
+            {
+
+
+                var emoji = DiscordEmoji.FromName(e.Context.Client, ":no_entry:");
+
+
+                var embed = new DiscordEmbedBuilder
+                {
+                    Title = "Access denied",
+                    Description = $"{emoji} You do not have the permissions required to execute this command.",
+                    Color = new DiscordColor(0xFF0000)
+                };
+                await e.Context.RespondAsync("", embed: embed);
+            }
         }
     }
 
-    // Data from config.json
+    
     public struct ConfigJson
     {
         [JsonProperty("token")]

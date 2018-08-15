@@ -7,6 +7,8 @@ using DSharpPlus.CommandsNext.Attributes;
 using Newtonsoft.Json;
 using System.IO;
 using System.Text;
+using DSharpPlus.Entities;
+using static TweeterBotv4.Program;
 
 namespace TweeterBotv4
 {
@@ -102,7 +104,7 @@ namespace TweeterBotv4
 
         
 
-        [Command("ban"), Aliases("feelsbadman"), Description("Feels bad, man.")]
+        [Command("ban"), Aliases("BanHammer"), Description("You have been Banned.")]
         public async Task ban(CommandContext ctx)
         {
             await ctx.Message.DeleteAsync();
@@ -110,13 +112,12 @@ namespace TweeterBotv4
 
 
             // wrap it into an embed
-            var embed = new DiscordEmbed
+            var embed = new DiscordEmbedBuilder
             {
 
-                Image = new DiscordEmbedImage
-                {
-                    Url = "http://i.imgur.com/O3DHIA5.gif"
-                }
+                Title = "Banned",
+                ImageUrl = "http://i.imgur.com/O3DHIA5.gif"
+                
             };
             await ctx.RespondAsync("", embed: embed);
         }
@@ -127,13 +128,12 @@ namespace TweeterBotv4
             await ctx.Message.DeleteAsync();
             await ctx.TriggerTypingAsync();
 
-            var embed = new DiscordEmbed
+            var embed = new DiscordEmbedBuilder
             {
 
-                Image = new DiscordEmbedImage
-                {
-                    Url = "http://i.imgur.com/yarc3QG.gif"
-                }
+                Title = "Triggered",
+                ImageUrl = "http://i.imgur.com/yarc3QG.gif"
+            
             };
             await ctx.RespondAsync("", embed: embed);
         }
@@ -144,13 +144,12 @@ namespace TweeterBotv4
             await ctx.Message.DeleteAsync();
             await ctx.TriggerTypingAsync();
 
-            var embed = new DiscordEmbed
+            var embed = new DiscordEmbedBuilder
             {
 
-                Image = new DiscordEmbedImage
-                {
-                    Url = "http://s2.quickmeme.com/img/09/09a3e3c6040ad3cdbef74f06280883a4a0b8a0a4a27d0f536ad57d2490748420.jpg"
-                }
+                Title = "Hype",
+                ImageUrl = "http://s2.quickmeme.com/img/09/09a3e3c6040ad3cdbef74f06280883a4a0b8a0a4a27d0f536ad57d2490748420.jpg"
+            
             };
             await ctx.RespondAsync("", embed: embed);
         }
@@ -161,13 +160,12 @@ namespace TweeterBotv4
             await ctx.Message.DeleteAsync();
             await ctx.TriggerTypingAsync();
 
-            var embed = new DiscordEmbed
+            var embed = new DiscordEmbedBuilder
             {
 
-                Image = new DiscordEmbedImage
-                {
-                    Url = "http://i.imgur.com/VAvnHz0.gif"
-                }
+                Title = "FetishKD",
+                ImageUrl = "http://i.imgur.com/VAvnHz0.gif"
+            
             };
             await ctx.RespondAsync("", embed: embed);
         }
@@ -178,13 +176,12 @@ namespace TweeterBotv4
             await ctx.Message.DeleteAsync();
             await ctx.TriggerTypingAsync();
 
-            var embed = new DiscordEmbed
+            var embed = new DiscordEmbedBuilder
             {
 
-                Image = new DiscordEmbedImage
-                {
-                    Url = "http://i.imgur.com/eEdUeFm.gif"
-                }
+                Title = "Party !!!",
+                ImageUrl = "http://i.imgur.com/eEdUeFm.gif"
+            
             };
             await ctx.RespondAsync("", embed: embed);
         }

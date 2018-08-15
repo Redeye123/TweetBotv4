@@ -2516,26 +2516,6 @@
             <param name="embed">Embed to attach to the message.</param>
             <returns>The sent message.</returns>
         </member>
-        <member name="M:DSharpPlus.Entities.DiscordChannel.SendFileAsync(System.IO.FileStream,System.String,System.Boolean,DSharpPlus.Entities.DiscordEmbed)">
-            <summary>
-            Sends a message containing an attached file to this channel.
-            </summary>
-            <param name="file_data">Stream containing the data to attach to the message as a file.</param>
-            <param name="content">Content of the message to send.</param>
-            <param name="tts">Whether the message is to be read using TTS.</param>
-            <param name="embed">Embed to attach to the message.</param>
-            <returns>The sent message.</returns>
-        </member>
-        <member name="M:DSharpPlus.Entities.DiscordChannel.SendFileAsync(System.String,System.String,System.Boolean,DSharpPlus.Entities.DiscordEmbed)">
-            <summary>
-            Sends a message containing an attached file to this channel.
-            </summary>
-            <param name="file_path">Path to the file to be attached to the message.</param>
-            <param name="content">Content of the message to send.</param>
-            <param name="tts">Whether the message is to be read using TTS.</param>
-            <param name="embed">Embed to attach to the message.</param>
-            <returns>The sent message.</returns>
-        </member>
         <member name="M:DSharpPlus.Entities.DiscordChannel.SendMultipleFilesAsync(System.Collections.Generic.Dictionary{System.String,System.IO.Stream},System.String,System.Boolean,DSharpPlus.Entities.DiscordEmbed)">
             <summary>
             Sends a message with several attached files to this channel.
@@ -4754,26 +4734,6 @@
             <param name="embed">Embed to attach to the message.</param>
             <returns>The sent message.</returns>
         </member>
-        <member name="M:DSharpPlus.Entities.DiscordMember.SendFileAsync(System.IO.FileStream,System.String,System.Boolean,DSharpPlus.Entities.DiscordEmbed)">
-            <summary>
-            Sends a direct message with a file attached to this member. Creates a direct message channel if one does not exist already.
-            </summary>
-            <param name="file_data">Stream containing the data to attach as a file.</param>
-            <param name="content">Content of the message to send.</param>
-            <param name="is_tts">Whether the message is to be read using TTS.</param>
-            <param name="embed">Embed to attach to the message.</param>
-            <returns>The sent message.</returns>
-        </member>
-        <member name="M:DSharpPlus.Entities.DiscordMember.SendFileAsync(System.String,System.String,System.Boolean,DSharpPlus.Entities.DiscordEmbed)">
-            <summary>
-            Sends a direct message with a file attached to this member. Creates a direct message channel if one does not exist already.
-            </summary>
-            <param name="file_path">Path to the file to attach to the message.</param>
-            <param name="content">Content of the message to send.</param>
-            <param name="is_tts">Whether the message is to be read using TTS.</param>
-            <param name="embed">Embed to attach to the message.</param>
-            <returns>The sent message.</returns>
-        </member>
         <member name="M:DSharpPlus.Entities.DiscordMember.SendMultipleFilesAsync(System.Collections.Generic.Dictionary{System.String,System.IO.Stream},System.String,System.Boolean,DSharpPlus.Entities.DiscordEmbed)">
             <summary>
             Sends a direct message with several files attached to this member. Creates a direct message channel if one does not exist already.
@@ -5043,26 +5003,6 @@
             </summary>
             <param name="file_data">Stream containing the data to attach to the message as a file.</param>
             <param name="file_name">Name of the file to be attached.</param>
-            <param name="content">Message content to respond with.</param>
-            <param name="tts">Whether the message is to be read using TTS.</param>
-            <param name="embed">Embed to attach to the message.</param>
-            <returns>The sent message.</returns>
-        </member>
-        <member name="M:DSharpPlus.Entities.DiscordMessage.RespondWithFileAsync(System.IO.FileStream,System.String,System.Boolean,DSharpPlus.Entities.DiscordEmbed)">
-            <summary>
-            Responds to the message with a file.
-            </summary>
-            <param name="file_data">Stream containing the data to attach to the message as a file.</param>
-            <param name="content">Message content to respond with.</param>
-            <param name="tts">Whether the message is to be read using TTS.</param>
-            <param name="embed">Embed to attach to the message.</param>
-            <returns>The sent message.</returns>
-        </member>
-        <member name="M:DSharpPlus.Entities.DiscordMessage.RespondWithFileAsync(System.String,System.String,System.Boolean,DSharpPlus.Entities.DiscordEmbed)">
-            <summary>
-            Responds to the message with a file.
-            </summary>
-            <param name="file_path">Path to the file to be attached to the message.</param>
             <param name="content">Message content to respond with.</param>
             <param name="tts">Whether the message is to be read using TTS.</param>
             <param name="embed">Embed to attach to the message.</param>
@@ -7054,21 +6994,6 @@
             </summary>
         </member>
         <member name="P:DSharpPlus.Net.Udp.ConnectionEndpoint.Port">
-            <summary>
-            Gets or sets the port associated with this endpoint.
-            </summary>
-        </member>
-        <member name="T:DSharpPlus.Net.Udp.IpEndpoint">
-            <summary>
-            Represents a network connection IP endpoint.
-            </summary>
-        </member>
-        <member name="P:DSharpPlus.Net.Udp.IpEndpoint.Address">
-            <summary>
-            Gets or sets the hostname associated with this endpoint.
-            </summary>
-        </member>
-        <member name="P:DSharpPlus.Net.Udp.IpEndpoint.Port">
             <summary>
             Gets or sets the port associated with this endpoint.
             </summary>

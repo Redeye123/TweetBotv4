@@ -50,3 +50,11 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+TweeterBotv4/bin/Debug/config.json
+.vs/TweeterBotv4/DesignTimeBuild/.dtbcache
+.vs/TweeterBotv4/v15/Server/sqlite3/db.lock
+.vs/TweeterBotv4/v15/.suo
+.vs/TweeterBotv4/v15/Server/sqlite3/storage.ide
+.vs/TweeterBotv4/v15/Server/sqlite3/storage.ide-shm
+.vs/TweeterBotv4/v15/Server/sqlite3/storage.ide-wal
+TweeterBotv4/bin/Debug/config.json
