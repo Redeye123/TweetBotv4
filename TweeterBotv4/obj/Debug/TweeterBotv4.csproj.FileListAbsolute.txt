@@ -26,3 +26,5 @@ C:\Users\danny\Documents\GitHub\TPGBot\TweeterBotv4\bin\Debug\Newtonsoft.Json.xm
 C:\Users\danny\Documents\GitHub\TPGBot\TweeterBotv4\obj\Debug\TweeterBotv4.csproj.CopyComplete
 C:\Users\danny\Documents\GitHub\TPGBot\TweeterBotv4\obj\Debug\TweeterBotv4.exe
 C:\Users\danny\Documents\GitHub\TPGBot\TweeterBotv4\obj\Debug\TweeterBotv4.pdb
+C:\Users\danny\Documents\GitHub\TPGBot\TweeterBotv4\bin\Debug\DSharpPlus.Interactivity.dll
+C:\Users\danny\Documents\GitHub\TPGBot\TweeterBotv4\bin\Debug\DSharpPlus.Interactivity.xml

@@ -8,11 +8,12 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 using DSharpPlus.Entities;
+using DSharpPlus.Interactivity;
 using static TweeterBotv4.Program;
 
 namespace TweeterBotv4
 {
-    
+
 
     public class UngrouppedCommands
     {
@@ -41,16 +42,34 @@ namespace TweeterBotv4
 
         }
 
+        [Command("testy")] // let's define this method as a command
+        [Description("test command")] // this will be displayed to tell users what this command does when they invoke help
+        [Aliases("t")] // alternative names for the command
+        public async Task test(CommandContext ctx)
+        {
+            // Delete Command Msg
+            await ctx.Message.DeleteAsync();
+            // Tell them bot is writing a msg
+            await ctx.TriggerTypingAsync();
+
+            // Add a Emoji
+            var emoji = DiscordEmoji.FromName(ctx.Client, ":thumbsup:");
+
+            // respond with ping
+            await ctx.RespondAsync($"{emoji}");
+
+        }
+
 
         [Command("smack"), Description("Smacks specified user.")]
         public async Task Greet(CommandContext ctx, [Description("Smacks specified user")] DiscordMember member) // this command takes a member as an argument; you can pass one by username, nickname, id, or mention
         {
             await ctx.Message.DeleteAsync();
             await ctx.TriggerTypingAsync();
-            
+
             var emoji = DiscordEmoji.FromName(ctx.Client, ":wave::skin-tone-1:");
 
-            
+
             await ctx.RespondAsync($"{emoji} Smacks {member.Mention} for bad behaviour");
         }
 
@@ -102,7 +121,7 @@ namespace TweeterBotv4
             await ctx.RespondAsync($"{emoji} {emoji} {emoji} for Cerizzle {emoji} {emoji} {emoji}");
         }
 
-        
+
 
         [Command("ban"), Aliases("BanHammer"), Description("You have been Banned.")]
         public async Task ban(CommandContext ctx)
@@ -117,7 +136,7 @@ namespace TweeterBotv4
 
                 Title = "Banned",
                 ImageUrl = "http://i.imgur.com/O3DHIA5.gif"
-                
+
             };
             await ctx.RespondAsync("", embed: embed);
         }
@@ -133,7 +152,7 @@ namespace TweeterBotv4
 
                 Title = "Triggered",
                 ImageUrl = "http://i.imgur.com/yarc3QG.gif"
-            
+
             };
             await ctx.RespondAsync("", embed: embed);
         }
@@ -149,7 +168,7 @@ namespace TweeterBotv4
 
                 Title = "Hype",
                 ImageUrl = "http://s2.quickmeme.com/img/09/09a3e3c6040ad3cdbef74f06280883a4a0b8a0a4a27d0f536ad57d2490748420.jpg"
-            
+
             };
             await ctx.RespondAsync("", embed: embed);
         }
@@ -165,7 +184,7 @@ namespace TweeterBotv4
 
                 Title = "FetishKD",
                 ImageUrl = "http://i.imgur.com/VAvnHz0.gif"
-            
+
             };
             await ctx.RespondAsync("", embed: embed);
         }
@@ -181,7 +200,7 @@ namespace TweeterBotv4
 
                 Title = "Party !!!",
                 ImageUrl = "http://i.imgur.com/eEdUeFm.gif"
-            
+
             };
             await ctx.RespondAsync("", embed: embed);
         }
@@ -192,6 +211,14 @@ namespace TweeterBotv4
             await ctx.Message.DeleteAsync();
             await ctx.TriggerTypingAsync();
             await ctx.RespondAsync($"┬─┬ノ( º _ ºノ)  (ﾉಥ益ಥ）ﾉ﻿ ┻━┻");
+        }
+
+        [Command("deskback"), Aliases("db"), Description("flips desk")]
+        public async Task deskback(CommandContext ctx)
+        {
+            await ctx.Message.DeleteAsync();
+            await ctx.TriggerTypingAsync();
+            await ctx.RespondAsync($"┻━┻ノ( ಥ益ಥノ)  (ﾉº _ º）ﾉ﻿ ┬─┬");
         }
 
         [Command("strip"), Description("Strips a member")]
@@ -264,13 +291,13 @@ namespace TweeterBotv4
             await ctx.RespondAsync($"So dont mess with her or ill send Gimzi after you");
         }
 
-        [Command("ip"), Description("ip")]
-        public async Task ip(CommandContext ctx, DiscordChannel channel)
+        [Command("info"), Description("ip")]
+        public async Task ip(CommandContext ctx)
         {
-            await ctx.Message.DeleteAsync();
             await ctx.TriggerTypingAsync();
-            await ctx.RespondAsync($"The IP's are in {channel.Mention} you dork");
-            await ctx.RespondAsync($"(ﾉಥ益ಥ）ﾉ﻿ ┻━┻");
+
+            await ctx.RespondAsync($"The IP's are in <#346786841799688193> you do have to be a full member to be able to see that channel");
+            await ctx.RespondAsync($"Not a member ? Please check <#219834093892927488> to become one !");
         }
 
         [Command("count"), Hidden, Description("Will count all the Members on this server")]
@@ -280,7 +307,7 @@ namespace TweeterBotv4
             await ctx.TriggerTypingAsync();
             int memb = ctx.Guild.MemberCount;
             await ctx.RespondAsync($"Our total Membercount is : {memb} !!!");
-            
+
         }
 
 
@@ -358,15 +385,15 @@ namespace TweeterBotv4
             await ctx.RespondAsync($"The sum of these numbers is {sum.ToString("#,##0")}");
         }
 
-        [Command("nicks"),Hidden , Description("Gives someone a new nickname."), RequirePermissions(Permissions.Administrator)]
-        public async Task ChangeNickname(CommandContext ctx, [Description("Member to change the nickname for.")] DiscordMember member,DiscordRole role, [RemainingText, Description("The nickname to give to that user.")] string new_nickname)
+        [Command("nicks"), Hidden, Description("Gives someone a new nickname."), RequirePermissions(Permissions.Administrator)]
+        public async Task ChangeNickname(CommandContext ctx, [Description("Member to change the nickname for.")] DiscordMember member, DiscordRole role, [RemainingText, Description("The nickname to give to that user.")] string new_nickname)
         {
             // let's trigger a typing indicator to let
             // users know we're working
             await ctx.Message.DeleteAsync();
             await ctx.TriggerTypingAsync();
-            
-            
+
+
             try
             {
                 // let's change the nickname, and tell the 
@@ -418,12 +445,101 @@ namespace TweeterBotv4
             var emoji = DiscordEmoji.FromName(ctx.Client, ":1234:");
             await ctx.RespondAsync($"{emoji} The result is {result.ToString("#,##0.00")}");
         }
+
+        [Command("waitforcode"), Description("Waits for a response containing a generated code.")]
+        public async Task WaitForCode(CommandContext ctx)
+        {
+            // first retrieve the interactivity module from the client
+            var interactivity = ctx.Client.GetInteractivityModule();
+
+            // wait for anyone who types it
+            var msg = await interactivity.WaitForMessageAsync(xm => xm.Content.Contains("[Hh][Ii]?"), TimeSpan.FromSeconds(60));
+            if (msg != null)
+            {
+                // announce the winner
+                await ctx.RespondAsync($"And the winner is: {msg.Message.Author.Mention}");
+            }
+            else
+            {
+                await ctx.RespondAsync("Nobody? Really?");
+            }
+        }
+
+        [Command("penis"), Aliases("p"), Description("Shows your Penis lenght")]
+        public async Task penis(CommandContext ctx)
+        {
+            string[] awnsers =
+            {
+                "My tweezers could not get a hold on it for measuring",
+                "Sorry for saying this but its way to smelly to get near it Clean yourself dammit",
+                "Its like baby size but then 10x smaller",
+                "Sorry can't even see the damn thing with this magnifying glass"
+            };
+
+            await ctx.TriggerTypingAsync();
+            await ctx.RespondAsync("getting my magnifying glass");
+            await ctx.RespondAsync("...");
+            await ctx.RespondAsync("...");
+
+            ulong Redeye123 = 165581435225374721;
+            ulong Devin = 233859547595407360;
+            ulong Gimzi = 89181323570221056;
+            ulong Vanish = 126196095482068992;
+            ulong Rufio = 78672572874498048;
+            ulong KD = 145348764809428992;
+            ulong Husband = 226050525731356672;
+
+            if (ctx.Member.Id == Redeye123)
+            {
+                await ctx.RespondAsync("Magnifying glass was not needed Damn son i can see that one from a mile away");
+                await ctx.RespondAsync($"{ctx.Member.Mention} penis is this long 8======================================================D");
+            }
+            else if (ctx.Member.Id == Devin)
+            {
+                await ctx.RespondAsync("This seems to be a ... Bratwurst");
+                await ctx.RespondAsync($"{ctx.Member.Mention} Bratwurst is this long 8================================================D");
+            }
+            else if (ctx.Member.Id == Gimzi)
+            {
+                await ctx.RespondAsync("Your Girlfriend must be proud");
+                await ctx.RespondAsync($"{ctx.Member.Mention} penis is this long 8=============================================D");
+            }
+            else if (ctx.Member.Id == Vanish)
+            {
+                await ctx.RespondAsync("Oh my this one is like pure mussle you've trained it well");
+                await ctx.RespondAsync($"{ctx.Member.Mention} penis is this long 8============================================D");
+            }
+            else if (ctx.Member.Id == Rufio)
+            {
+                await ctx.RespondAsync("Tinkerbell would die to this so please dont use it on her");
+                await ctx.RespondAsync($"{ctx.Member.Mention} penis is this long 8===========================================D");
+            }
+            else if (ctx.Member.Id == KD)
+            {
+                await ctx.RespondAsync("What the hell are you using to jerk off its so freaking salty !");
+                await ctx.RespondAsync($"{ctx.Member.Mention} penis is this long 8==========================================D");
+            }
+            else if (ctx.Member.Id == Husband)
+            {
+                await ctx.RespondAsync("Now i understand why ellie loves you so much");
+                await ctx.RespondAsync($"{ctx.Member.Mention} penis is this long 8==========================================================D");
+            }
+            else
+            {
+                Random rand = new Random();
+                string result = awnsers[rand.Next(awnsers.Length)];
+                await ctx.RespondAsync(result);
+            }
+
+        }
+
+        
     }
 
     [Group("tpg")] // let's mark this class as a command group
     [Description("Administrative commands.")] // give it a description for help purposes
     //[Hidden] // let's hide this from the eyes of curious users
-    [RequirePermissions(Permissions.ManageNicknames)]
+    [RequirePermissions(Permissions.BanMembers)]
     public class GrouppedCommands
     {
 
@@ -431,7 +547,7 @@ namespace TweeterBotv4
         // all the commands will need to be executed as <prefix>admin <command> <arguments>
 
         // this command will be only executable by the bot's owner
-        [Command("sudo"), Description("Executes a command as another user."), Hidden, RequireOwner]
+        [Command("sudo"), Description("Executes a command as another user."), Hidden, RequireNsfw]
         public async Task Sudo(CommandContext ctx, [Description("Member to execute as.")] DiscordMember member, [RemainingText, Description("Command text to execute.")] string command)
         {
             await ctx.Message.DeleteAsync();
@@ -451,8 +567,6 @@ namespace TweeterBotv4
             // and perform the sudo
             await cmds.SudoAsync(member, ctx.Channel, command);
         }
-
-        
 
         [Command("say"), Hidden, Description("Let the bot say your msg")]
         public async Task say(CommandContext ctx)

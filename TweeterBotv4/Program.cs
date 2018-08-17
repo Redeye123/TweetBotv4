@@ -47,6 +47,8 @@ namespace TweeterBotv4
                 AutoReconnect = true,
                 LogLevel = LogLevel.Debug,
                 UseInternalLogHandler = true
+
+                
             };
 
             
@@ -54,6 +56,8 @@ namespace TweeterBotv4
             this.Client.Ready += this.Client_Ready;
             this.Client.GuildAvailable += this.Client_GuildAvailable;
             this.Client.ClientErrored += this.Client_ClientError;
+            
+            
 
             //let's set up our commands
             var ccfg = new CommandsNextConfiguration
@@ -78,7 +82,11 @@ namespace TweeterBotv4
             // finnaly, let's connect and log in
             await this.Client.ConnectAsync();
 
+
             // prevent premature quitting
+
+            
+
             await Task.Delay(-1);
         }
 
@@ -86,8 +94,8 @@ namespace TweeterBotv4
         {
             // let's log the fact that this event occured
             e.Client.DebugLogger.LogMessage(LogLevel.Info, "TPGBot", "Client is ready to process events.", DateTime.Now);
+            
 
-          
             return Task.CompletedTask;
         }
 
