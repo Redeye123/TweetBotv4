@@ -465,7 +465,7 @@ namespace TweeterBotv4
             }
         }
 
-        [Command("penis"), Aliases("p"), Description("Shows your Penis lenght")]
+        [Command("penis"), Aliases("p"), Description("Shows your Penis length")]
         public async Task penis(CommandContext ctx)
         {
             string[] awnsers =
@@ -506,7 +506,7 @@ namespace TweeterBotv4
             }
             else if (ctx.Member.Id == Vanish)
             {
-                await ctx.RespondAsync("Oh my this one is like pure mussle you've trained it well");
+                await ctx.RespondAsync("Oh my this one is like pure muscle you've trained it well");
                 await ctx.RespondAsync($"{ctx.Member.Mention} penis is this long 8============================================D");
             }
             else if (ctx.Member.Id == Rufio)
